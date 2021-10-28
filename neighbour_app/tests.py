@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Profile,Neighbourhood,Business
+from .models import Profile,Neighbourhood,Business,Post
 from django.contrib.auth.models import User
 
 # Create your tests here.
@@ -96,7 +96,56 @@ class BusinessTestClass(TestCase):
 
     def test_find_business(self):
         business_id = Business.find_business()
-        self.assertTrue(len(business_id) == 0)                     
+        self.assertTrue(len(business_id) == 0)         
+
+
+class PhotoTestClass(TestCase):
+        def setUp(self):
+            user = User.objects.create()
+            self.oti = Profile(username = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
+            self.oti.save()
+
+
+            self.new_post = Post(title ='test_name',content = 'test_content',created = '2021-10-23',author = self.oti )
+
+        def test_instance(self):
+            self.assertTrue(isinstance(self.new_post,Post))   
+
+
+
+        def test_save_method(self):
+            self.new_post.create_post()
+            post = Post.objects.all()
+            self.assertTrue(len(post) > 0)    
+
+        def tearDown(self):
+            Post.objects.all().delete()
+            Profile.objects.all().delete()
+
+        def test_delete_method(self):
+            self.new_post.create_post()
+            self.new_post.delete_post()
+            post = Post.objects.all()
+            self.assertTrue(len(post) == 0)    
+
+        def test_update_method(self):
+            self.new_post.create_post()
+            self.new_post.update_post()
+            post = Post.objects.all()
+            self.assertTrue(len(post) > 0) 
+
+
+        def test_find_post(self):
+            post_id = Post.find_post()
+            self.assertTrue(len(post_id) == 0)         
+
+
+
+     
+
+
+
+
 
 
 
