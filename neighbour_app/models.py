@@ -75,6 +75,36 @@ class Business(models.Model):
         business = cls.objects.filter(id = business_id)   
         return business       
 
+class Post(models.Model):
+    title = models.CharField(max_length=80)
+    content = models.TextField()
+    image = CloudinaryField('image',null = True)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(Profile,on_delete=models.CASCADE,related_name='posts')
+
+
+    def __str__(self):
+        return str(self.content[:20])
+
+    def create_post(self):
+        self.save()
+
+    def delete_post(self):
+        self.delete()
+
+    def update_post(self):
+        self.save()
+
+    @classmethod
+    def find_post(cls,post_id = None):
+        post = cls.objects.filter(id = post_id)   
+        return post       
+
+
+    class Meta:
+        ordering = ['-created'] 
+
         
 
 
