@@ -1,0 +1,54 @@
+{% extends 'neighbour/base.html'%}
+
+{% block title%}My Profile{% endblock%}
+{% block content%}
+
+
+
+<!-- CONTENT -->
+
+<div class="ui grid">
+<div class="row">
+<div class="eight wide  column">
+<div class="ui raised segment">
+
+  <h3>My Profile:</h3>
+  <div class="ui grid">
+  <div class="row">
+    <div class="six wide column">
+      <img class="ui small rounded image" src="{{profile.image.url}}"  alt="">
+      <div class="mt-5">
+        <button class="ui inverted  green button" id="modal-btn">Update your profile</button>
+      </div>
+
+    </div>
+    <div class="ten wide column">
+      <table class="ui table">
+        <tbody>
+          <tr>
+            <td>username:</td>
+            <td>{{profile.user}}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{profile.email}}</td>
+
+          </tr>
+          <tr>
+            <td>Identity number:</td>
+            <td>{{profile.identity}}</td>
+          </tr>
+         
+        </tbody>
+      </table>
+      </div>
+
+  </div>
+  </div>
+
+</div>
+</div>
+</div>
+</div>
+
+{% endblock%}
