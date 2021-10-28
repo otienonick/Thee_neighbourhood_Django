@@ -15,8 +15,13 @@ class Profile(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
 
+
     def __str__(self):
         return f'{self.username}-{self.created}'
+
+    def  save_profile(self):
+        self.save()
+    
 
 
 class Neighbourhood(models.Model):
@@ -27,3 +32,23 @@ class Neighbourhood(models.Model):
 
     def __str__(self):
         return f'{self.admin}'
+ 
+
+    def create_neighbourhood(self):
+        self.save()
+
+    def delete_neighbourhood(self):
+        self.delete()
+
+    def update_neighbourhood(self):
+        self.save()
+
+    def update_occupants(self):
+        self.save()
+    
+    @classmethod
+    def find_neighbourhood(cls,neighbourhood_id = None):
+        neighbourhood = cls.objects.filter(id = neighbourhood_id)   
+        return neighbourhood   
+
+
