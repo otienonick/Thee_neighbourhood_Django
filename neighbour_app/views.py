@@ -1,9 +1,25 @@
 from django.shortcuts import render
+from . models import  Profile,Post
+
 
 # Create your views here.
 
 def home(request):
+    posts = Post.objects.all()
     
-    context = {}
 
-    return render(request,context)
+    
+    context = {
+        'posts':posts,
+    }
+
+    return render(request,'neighbour/home.html',context)
+
+def my_profile_view(request):
+    profile = Profile.objects.get(user = request.user)
+
+    context = {
+        'profile':profile,
+    
+    }
+    return render(request,'profiles/myprofile.html',context)
