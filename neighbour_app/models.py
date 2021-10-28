@@ -51,4 +51,33 @@ class Neighbourhood(models.Model):
         neighbourhood = cls.objects.filter(id = neighbourhood_id)   
         return neighbourhood   
 
+class Business(models.Model):
+    name = models.CharField(max_length=255)
+    user = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    image = CloudinaryField('image',null = True)
+    neighbourhood_id = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return f'{self.user}-{self.neighbourhood_id}'
+
+    def create_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
+
+    def update_business(self):
+        self.save()
+    
+    @classmethod
+    def find_business(cls,business_id = None):
+        business = cls.objects.filter(id = business_id)   
+        return business       
+
+        
+
+
+
+    
 

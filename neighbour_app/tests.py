@@ -1,6 +1,5 @@
-from cloudinary.api import usage
 from django.test import TestCase
-from .models import Profile,Neighbourhood
+from .models import Profile,Neighbourhood,Business
 from django.contrib.auth.models import User
 
 # Create your tests here.
@@ -54,9 +53,59 @@ class NeighbourhoodTestClass(TestCase):
             neighbourhood = Neighbourhood.objects.all()
             self.assertTrue(len(neighbourhood) > 0)    
 
-    def test_find_neighbourhood_by_id(self):
+    def test_find_neighbourhood(self):
         neighbourhood_id = Neighbourhood.find_neighbourhood()
-        self.assertTrue(len(neighbourhood_id) == 0)                                    
+        self.assertTrue(len(neighbourhood_id) == 0)    
+
+class BusinessTestClass(TestCase):
+
+    def setUp(self):
+        user = User.objects.create()
+        self.oti = Profile(username = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
+        self.oti.save()
+
+        self.new_neighbourhood = Neighbourhood(name = 'test_name',location = 'test_location',occupants = '5000',admin = self.oti)
+        self.new_neighbourhood.create_neighbourhood()
+        neighbourhood = Neighbourhood.objects.all()
+        self.assertTrue(len(neighbourhood) > 0)  
+
+
+        self.new_business = Business(name = 'test_name',user = self.oti,neighbourhood_id = self.new_neighbourhood,email = 'test_email')
+        self.new_business.create_business()
+        business = Business.objects.all()
+        self.assertTrue(len(business) > 0)
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_business,Business)) 
+
+
+    def tearDown(self):
+            Profile.objects.all().delete()
+            Business.objects.all().delete()
+
+    def test_delete_method(self):
+            self.new_business.create_business()
+            self.new_business.delete_business()
+            business = Business.objects.all()
+            self.assertTrue(len(business) == 0)  
+
+    def test_update_method(self):
+            self.new_business.update_business()
+            business = Business.objects.all()
+            self.assertTrue(len(business) > 0)     
+
+    def test_find_business(self):
+        business_id = Business.find_business()
+        self.assertTrue(len(business_id) == 0)                     
+
+
+
+
+
+
+    
+    
+
 
 
 
