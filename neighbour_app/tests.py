@@ -64,13 +64,13 @@ class BusinessTestClass(TestCase):
         self.oti = Profile(username = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
         self.oti.save()
 
-        self.new_neighbourhood = Neighbourhood(name = 'test_name',location = 'test_location',occupants = '5000',admin = self.oti)
+        self.new_neighbourhood = Neighbourhood(name = 'test_neighbourhood_name',location = 'test_location',occupants = '5000',admin = self.oti)
         self.new_neighbourhood.create_neighbourhood()
         neighbourhood = Neighbourhood.objects.all()
         self.assertTrue(len(neighbourhood) > 0)  
 
 
-        self.new_business = Business(name = 'test_name',user = self.oti,neighbourhood_id = self.new_neighbourhood,email = 'test_email')
+        self.new_business = Business(name = 'test_business_name',user = self.oti,neighbourhood_id = self.new_neighbourhood,email = 'test_email')
         self.new_business.create_business()
         business = Business.objects.all()
         self.assertTrue(len(business) > 0)
