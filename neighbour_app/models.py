@@ -7,7 +7,7 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Profile(models.Model):
-    username = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     email = models.EmailField(unique=True)
     image = CloudinaryField('image')
     identity = models.IntegerField(null=True)
@@ -21,9 +21,8 @@ class Profile(models.Model):
 
     def  save_profile(self):
         self.save()
+
     
-
-
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
@@ -85,7 +84,7 @@ class Post(models.Model):
 
 
     def __str__(self):
-        return str(self.content[:20])
+        return str(self.title[:30])
 
     def create_post(self):
         self.save()
