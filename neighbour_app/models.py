@@ -7,7 +7,7 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 
 class Profile(models.Model):
-    # username = models.CharField(max_length = 255,blank=True)
+    username = models.CharField(max_length = 255,blank=True)
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     email = models.EmailField(unique=True)
     image = CloudinaryField('image')
@@ -18,7 +18,7 @@ class Profile(models.Model):
 
 
     def __str__(self):
-        return f'{self.user}-{self.created}'
+        return f'{self.username}-{self.created}'
 
     def  save_profile(self):
         self.save()

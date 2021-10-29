@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class ProfileTestClass(TestCase):
     def setUp(self):
         user = User.objects.create()
-        self.oti = Profile(user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
+        self.oti = Profile(username = 'test_username',user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
 
     def test_instance(self):
         self.assertTrue(isinstance(self.oti,Profile))    
@@ -20,7 +20,7 @@ class ProfileTestClass(TestCase):
 class NeighbourhoodTestClass(TestCase):
     def setUp(self):
         user = User.objects.create()
-        self.oti = Profile(user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
+        self.oti = Profile(username = 'test_username',user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
         self.oti.save()
         
         self.new_neighbourhood = Neighbourhood(name = 'test_name',location = 'test_location',occupants = '5000',admin = self.oti)
@@ -61,7 +61,7 @@ class BusinessTestClass(TestCase):
 
     def setUp(self):
         user = User.objects.create()
-        self.oti = Profile(user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
+        self.oti = Profile(username = 'test_username',user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
         self.oti.save()
 
         self.new_neighbourhood = Neighbourhood(name = 'test_neighbourhood_name',location = 'test_location',occupants = '5000',admin = self.oti)

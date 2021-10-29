@@ -5,6 +5,33 @@
 
 
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="ui form" action="" enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit" class="ui positive  button">Update</button>
+      </form>   
+       </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 <!-- CONTENT -->
 <div class="container" id="profile">
 
@@ -19,8 +46,10 @@
     <div class="six wide column">
       <img class="ui small rounded image" src="{{profile.image.url}}"  alt="">
       <div class="mt-5">
-        <button class="ui inverted  green button" id="modal-btn">Update your profile</button>
+        <button class="ui inverted  green button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update your profile</button>
       </div>
+
+
 
     </div>
     <div class="ten wide column">
