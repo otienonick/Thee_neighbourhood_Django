@@ -5,12 +5,11 @@ from . models import  Profile,Post
 # Create your views here.
 
 def home(request):
-    posts = Post.objects.all()
-    
+    profile = Profile.objects.get(user = request.user)
 
-    
     context = {
-        'posts':posts,
+        'profile':profile,
+
     }
 
     return render(request,'neighbour/home.html',context)
@@ -23,3 +22,13 @@ def my_profile_view(request):
     
     }
     return render(request,'profiles/myprofile.html',context)
+
+def home_page(request):
+    posts = Post.objects.all()
+    
+    context = {
+        'posts':posts,
+    }
+    return render(request,'neighbour/homepage.html',context)
+
+
