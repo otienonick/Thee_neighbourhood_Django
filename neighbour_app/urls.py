@@ -1,13 +1,15 @@
 from django.urls import path 
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import home,my_profile_view,home_page,update_location
+from .views import home,my_profile_view,home_page,update_location,business_details
 
 urlpatterns = [
     path('' , home , name = 'home'),
     path('myprofile/',my_profile_view,name ='profile'),
     path('homepage/',home_page,name ='homepage'),
     path('update-location/',update_location,name ='location'),
+    path('business/<str:pk>' , business_details , name='business'),
+
 
 ]
 
