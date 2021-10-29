@@ -1,13 +1,4 @@
 
-// // SHOW MODAL
-// $(document).ready(function(){
-//   $('#modal-btn').click(function(){
-//       $('.ui.modal')
-//       .modal('show')
-//   });
-
-// });
-
 // REMOVE MESSAGE
 $('.message .close')
 .on('click', function() {
@@ -15,5 +6,6 @@ $('.message .close')
     .closest('.message')
     .transition('fade')
   ;
-})
-;
+});
+
+

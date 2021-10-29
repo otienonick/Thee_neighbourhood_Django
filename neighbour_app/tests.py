@@ -20,10 +20,8 @@ class ProfileTestClass(TestCase):
 class NeighbourhoodTestClass(TestCase):
     def setUp(self):
         user = User.objects.create()
-        self.oti = Profile(username = 'test_username',user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
-        self.oti.save()
         
-        self.new_neighbourhood = Neighbourhood(name = 'test_name',location = 'test_location',occupants = '5000',admin = self.oti)
+        self.new_neighbourhood = Neighbourhood(name = 'test_name',location = 'test_location',occupants = '5000',admin = user)
 
     def test_instance(self):
             self.assertTrue(isinstance(self.new_neighbourhood,Neighbourhood)) 
@@ -63,8 +61,8 @@ class BusinessTestClass(TestCase):
         user = User.objects.create()
         self.oti = Profile(username = 'test_username',user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
         self.oti.save()
-
-        self.new_neighbourhood = Neighbourhood(name = 'test_neighbourhood_name',location = 'test_location',occupants = '5000',admin = self.oti)
+        
+        self.new_neighbourhood = Neighbourhood(name = 'test_neighbourhood_name',location = 'test_location',occupants = '5000',admin = user)
         self.new_neighbourhood.create_neighbourhood()
         neighbourhood = Neighbourhood.objects.all()
         self.assertTrue(len(neighbourhood) > 0)  
@@ -103,6 +101,7 @@ class PhotoTestClass(TestCase):
         def setUp(self):
             user = User.objects.create()
             self.new_post = Post(title ='test_name',content = 'test_content',created = '2021-10-23',author = user )
+            
 
         def test_instance(self):
             self.assertTrue(isinstance(self.new_post,Post))   

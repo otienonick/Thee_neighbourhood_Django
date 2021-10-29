@@ -13,7 +13,6 @@ class ProfileModelForm(forms.ModelForm):
 class NeighbourhoodModelForm(forms.ModelForm):
     name = forms.CharField(label = 'hood')
     
-
     class Meta:
         model = Neighbourhood
         fields = ['location','name','occupants']        
