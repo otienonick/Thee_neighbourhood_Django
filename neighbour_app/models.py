@@ -53,13 +53,13 @@ class Neighbourhood(models.Model):
 
 class Business(models.Model):
     name = models.CharField(max_length=255)
-    user = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     image = CloudinaryField('image',null = True,blank = True)
     neighbourhood_id = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     email = models.EmailField(unique=True)
 
     def __str__(self):
-        return f'{self.user}-{self.neighbourhood_id}'
+        return f'{self.name}-{self.neighbourhood_id}'
 
     def create_business(self):
         self.save()

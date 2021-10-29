@@ -1,0 +1,47 @@
+{%extends 'neighbour/base.html'%}
+{% block content %}
+{{block.super}}
+<div class="container d-flex justify-content-center" style="margin-top: 100px;">
+    <div class="row reduce__card pt-5">
+        <div class="col ui piled raised segment ">
+            <div class="my-3">
+                <img src="{{business.image.url}}" class="img-fluid ui medium image mb-3" alt="simps">
+               
+            </div>
+            <h6><span class="upper"> {{business.title}}</span></h6>
+
+            <p class="my-3">{{business.content}}</p>
+    
+    
+
+        </div>
+        <div class="mt-5">
+            <button class="ui inverted  green button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Post a Business</button>
+          </div>
+    </div>
+</div>
+
+<!-- BUSINESS MODAL -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Post a Premise</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="ui form" action="" id="formOne" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+  
+            {{b_form.as_p}}
+            <button type="submit"  class="ui positive  button">Post</button>
+  
+        </form>   
+         </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+{%endblock%}

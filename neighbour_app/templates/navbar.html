@@ -12,7 +12,18 @@
           <ul>
             <li><a class="nav-link scrollto" href="#services">Services</a></li>
        
-            <li><a class="nav-link scrollto" href="#contact">Businesses near me</a></li>
+            <li class="dropdown"><a href="#"><span>Businesses near me </span></a>
+              <ul>
+                {% for bizna in biz %}
+
+                <a href="{% url 'business' bizna.id %}"><li>{{bizna.name}}</li></a>
+
+                {% endfor %}
+
+              </ul>
+
+              </li>
+
             <li class="dropdown"><a href="#"><span><i class="user large icon"></i>{{request.user}} </span></a>
               <ul>
                 <li><a href="/myprofile">Profile</a></li>
