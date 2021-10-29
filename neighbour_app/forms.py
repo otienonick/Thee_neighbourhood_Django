@@ -1,4 +1,4 @@
-from .models import Profile,Post
+from .models import Profile,Post,Neighbourhood
 from django import forms
 
 class ProfileModelForm(forms.ModelForm):
@@ -8,3 +8,12 @@ class ProfileModelForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['username','email','identity','image']
+
+
+class NeighbourhoodModelForm(forms.ModelForm):
+    name = forms.CharField(label = 'hood')
+    
+
+    class Meta:
+        model = Neighbourhood
+        fields = ['location','name','occupants']        

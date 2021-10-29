@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from . models import  Profile,Post
-from .forms  import ProfileModelForm
+from . models import  Profile,Post,Neighbourhood
+from .forms  import ProfileModelForm,NeighbourhoodModelForm
 
 
 # Create your views here.
@@ -17,21 +17,21 @@ def home(request):
 
 def my_profile_view(request):
     profile = Profile.objects.get(user = request.user)
+    neighbour = Neighbourhood.objects.get(admin = request.user)
     form = ProfileModelForm(request.POST or None ,request.FILES or None,instance = profile)
+    n_form = NeighbourhoodModelForm(request.POST or None,instance = neighbour)
 
-    comfirm = False
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-            comfirm = True
+
+
 
     context = {
         'profile':profile,
         'form':form,
-        'comfirm':comfirm,
+        'neighbour':neighbour,
+        'n_form':n_form
     
     }
-    
+
     return render(request,'profiles/myprofile.html',context)
 
 def home_page(request):

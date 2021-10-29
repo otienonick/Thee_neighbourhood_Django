@@ -28,7 +28,7 @@ class Neighbourhood(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     occupants = models.IntegerField()
-    admin = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    admin = models.ForeignKey(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.admin}'

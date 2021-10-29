@@ -5,14 +5,12 @@
 
 
 
-
-
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Profile Update</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -26,9 +24,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 
 
@@ -57,7 +52,7 @@
         <tbody>
           <tr>
             <td>username:</td>
-            <td>{{profile.user}}</td>
+            <td>{{profile.username}}</td>
           </tr>
           <tr>
             <td>Email:</td>
@@ -78,6 +73,50 @@
 
 </div>
 </div>
+
+<div class="eight wide  column">
+  <div class="ui raised segment">
+
+    <table class="ui table">
+      <tbody>
+        <tr>
+          <td>Location:</td>
+          <td>{{neighbour.location}}</td>
+        </tr>
+        <tr>
+          <td>Hood:</td>
+          <td>{{neighbour.name}}</td>
+        </tr>
+        <tr>
+          <td>Number of Occupants:</td>
+          <td>{{neighbour.occupants}}</td>
+        </tr>
+       
+      </tbody>
+    </table>
+
+
+<!-- FORM -->
+
+
+<div class="ui raised segment">
+
+  
+  <form  method="POST" class="ui form" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{n_form.as_p}}
+
+    <div class="ui ">
+       <button type="submit" class="ui button positive">Update</button>
+
+    </div>
+
+</form>
+</div>
+
+  </div>
+  </div>
 </div>
 </div>
 </div>
