@@ -1,4 +1,4 @@
-from .models import Profile,Post,Neighbourhood
+from .models import Profile,Post,Neighbourhood,Business
 from django import forms
 
 class ProfileModelForm(forms.ModelForm):
@@ -16,3 +16,10 @@ class NeighbourhoodModelForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
         fields = ['location','name','occupants']        
+
+class BusinessModelForm(forms.ModelForm):
+    name = forms.CharField(label = 'Business name')
+
+    class Meta:
+        model = Business
+        fields = ['name','image','email','neighbourhood_id']     
