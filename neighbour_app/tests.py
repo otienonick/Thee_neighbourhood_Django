@@ -102,16 +102,10 @@ class BusinessTestClass(TestCase):
 class PhotoTestClass(TestCase):
         def setUp(self):
             user = User.objects.create()
-            self.oti = Profile(user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' )
-            self.oti.save()
-
-
-            self.new_post = Post(title ='test_name',content = 'test_content',created = '2021-10-23',author = self.oti )
+            self.new_post = Post(title ='test_name',content = 'test_content',created = '2021-10-23',author = user )
 
         def test_instance(self):
             self.assertTrue(isinstance(self.new_post,Post))   
-
-
 
         def test_save_method(self):
             self.new_post.create_post()
