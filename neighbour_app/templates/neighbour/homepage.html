@@ -1,0 +1,47 @@
+{% extends 'neighbour/base.html'%}
+
+
+{% block title%}Your Story{% endblock%}
+{% block content%}
+
+        <div class="container mt-5 homepage">  
+            <div class="ui center aligned basic segment">
+
+                <div class="ui horizontal divider">
+                    WELCOME
+                    </div>
+                    </div>    
+
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-6 col-lg-4 col-12 col-sm-12">
+            <div class="row m-1 mb-3">
+                <div class="card  ">
+                    <div class="image mt-3">
+                        <img class="ui image image__img" src="{{post.image.url}}" alt="img">
+                    </div>
+                    
+                    <div class="card-body">
+                        <h6><span class="upper"> {{post.name}}</span></h6><br>
+
+              
+                        <p class="float-end">{{post.created |date:"M d, Y"}}</p>
+                        <p>By:<span class="upper fs-5"> {{post.author}}</span></p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="row">
+            <h2 class="text-center text-white">No photos</h2>
+          </div>
+        {% endfor%}
+        
+    </div>
+
+
+                </div>
+
+
+      
+{% endblock%}

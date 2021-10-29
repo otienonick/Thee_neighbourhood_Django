@@ -1,4 +1,5 @@
 {% load static %}
+{% load bootstrap5 %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,26 +7,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!--Custom css ADD HERE-->
-    
+    {% block styles %}
+
+    {% bootstrap_css %}
+
     <!-- semantic UI -->
     <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-   
-    <title>Awardzz - {% block title %}{% endblock title %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+    {% endblock %}
+
+    <title>Thee Neighbourhood - {% block title %}{% endblock title %}</title>
   </head>
   <body>
     {% include 'navbar.html' %}
 
-    <div class="ui container">
+    <div class="">
       {% block content %}
+
       {% endblock content %}
     </div>
 
     {% block scripts %}
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  {% bootstrap_javascript %}
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/alchemyjs/0.4.2/scripts/vendor.js"></script>
+
     <script src="{% static 'js/script.js' %}"></script>
     {% endblock scripts %}
    
