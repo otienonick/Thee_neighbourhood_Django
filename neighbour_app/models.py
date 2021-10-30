@@ -9,7 +9,7 @@ from cloudinary.models import CloudinaryField
 class Profile(models.Model):
     username = models.CharField(max_length = 255,blank=True)
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
     image = CloudinaryField('image')
     identity = models.IntegerField(null=True ,default='12345678')
     updated = models.DateTimeField(auto_now=True)
