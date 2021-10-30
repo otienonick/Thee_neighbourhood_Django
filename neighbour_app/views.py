@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from . models import  Profile,Post,Business
 from .forms  import ProfileModelForm,BusinessModelForm,PostModelForm
 from django.contrib.auth.decorators import login_required
+from .forms import NewsLetterForm
 
 
 # Create your views here.
@@ -9,12 +10,33 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     biz = Business.objects.all()
 
+
+
     context = {
         'biz':biz,
 
     }
 
+
     return render(request,'neighbour/home.html',context)
+
+
+# def footer(request):
+#     if request.method == 'POST':
+#         form = NewsLetterForm(request.POST)
+#     if form.is_valid():
+#         print('valid')
+#     else:
+#         form = NewsLetterForm()
+
+#     context = {
+#         "letterForm":form
+
+#     }
+#     return render(request,'footer.html',context)
+
+
+
 
 def my_profile_view(request):
     biz = Business.objects.all()

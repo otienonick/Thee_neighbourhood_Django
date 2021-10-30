@@ -34,3 +34,5 @@ class BusinessModelForm(forms.ModelForm):
         model = Business
         fields = ['name','image','email','neighbourhood_id','phone_number']     
 
+class NewsLetterForm(forms.Form):
+    email = forms.EmailField(label='Email')
