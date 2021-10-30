@@ -20,36 +20,7 @@ body {
     font-family: "Raleway", sans-serif;
   }
   
-  /*--------------------------------------------------------------
-  # Back to top button
-  --------------------------------------------------------------*/
-  .back-to-top {
-    position: fixed;
-    visibility: hidden;
-    opacity: 0;
-    right: 15px;
-    bottom: 15px;
-    z-index: 996;
-    background: #009970;
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    transition: all 0.4s;
-  }
-  .back-to-top i {
-    font-size: 28px;
-    color: #fff;
-    line-height: 0;
-  }
-  .back-to-top:hover {
-    background: #00c28e;
-    color: #fff;
-  }
-  .back-to-top.active {
-    visibility: visible;
-    opacity: 1;
-  }
-  
+
   /*--------------------------------------------------------------
   # Disable AOS delay on mobile
   --------------------------------------------------------------*/
@@ -102,6 +73,7 @@ body {
       top: 0;
       background: #009970;
     }
+    
     #header.header-scrolled, #header .header-container {
       background: #009970;
     }
@@ -222,90 +194,22 @@ body {
   /**
   * Mobile Navigation 
   */
-  .mobile-nav-toggle {
-    color: #fff;
-    font-size: 28px;
-    cursor: pointer;
-    display: none;
-    line-height: 0;
-    transition: 0.5s;
-  }
-  
-  @media (max-width: 991px) {
-    .mobile-nav-toggle {
-      display: block;
-    }
-  
-    .navbar ul {
+
+  @media (max-width: 768px) {
+    #homes{
       display: none;
     }
-  }
-  .navbar-mobile {
-    position: fixed;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgba(29, 28, 31, 0.9);
-    transition: 0.3s;
-    z-index: 999;
-  }
-  .navbar-mobile .mobile-nav-toggle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-  }
-  .navbar-mobile ul {
-    display: block;
-    position: absolute;
-    top: 55px;
-    right: 15px;
-    bottom: 15px;
-    left: 15px;
-    padding: 10px 0;
-    background-color: #fff;
-    overflow-y: auto;
-    transition: 0.3s;
-  }
-  .navbar-mobile a, .navbar-mobile a:focus {
-    padding: 10px 20px;
-    font-size: 15px;
-    color: #36343a;
-  }
-  .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
-    color: #009970;
-  }
-  .navbar-mobile .getstarted, .navbar-mobile .getstarted:focus {
-    margin: 15px;
-  }
-  .navbar-mobile .dropdown ul {
-    position: static;
-    display: none;
-    margin: 10px 20px;
-    padding: 10px 0;
-    z-index: 99;
-    opacity: 1;
-    visibility: visible;
-    background: #fff;
-    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-  }
-  .navbar-mobile .dropdown ul li {
-    min-width: 200px;
-  }
-  .navbar-mobile .dropdown ul a {
-    padding: 10px 20px;
-  }
-  .navbar-mobile .dropdown ul a i {
-    font-size: 12px;
-  }
-  .navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
-    color: #009970;
-  }
-  .navbar-mobile .dropdown > .dropdown-active {
-    display: block;
-  }
+
+    .navbar ul a :hover {
+      color: white ;
+
+    }
+    #hide{
+      display: none;
+    }
   
+  }
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
