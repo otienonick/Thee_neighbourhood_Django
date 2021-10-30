@@ -1,11 +1,11 @@
 {%extends 'neighbour/base.html'%}
 {% block content %}
 {{block.super}}
-<div class="container d-flex justify-content-center" style="margin-top: 100px;">
+<div class="container d-flex justify-content-center" style="margin-top: 100px; width: 600px;">
     <div class="row reduce__card pt-5">
         <div class="col ui piled raised segment ">
             <div class="my-3">
-                <img src="{{business.image.url}}" class="img-fluid ui medium image mb-3" alt="simps">
+                <img src="{{business.image.url}}" class="img-fluid ui image mb-3" alt="simps">
                
             </div>
             <h6><span class="upper"> {{business.title}}</span></h6>
@@ -16,7 +16,7 @@
 
         </div>
         <div class="mt-5">
-            <button class="ui inverted  green button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Post a Business</button>
+            <button class="ui inverted  green button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Post a Businnes</button>
           </div>
     </div>
 </div>
@@ -34,7 +34,7 @@
             {% csrf_token %}
   
             {{b_form.as_p}}
-            <button type="submit"  class="ui positive  button">Post</button>
+            <button type="submit"  class="ui positive  button">Update</button>
   
         </form>   
          </div>

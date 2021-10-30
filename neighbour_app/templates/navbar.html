@@ -3,7 +3,7 @@
     <div class="container">
       <div class="header-container d-flex align-items-center justify-content-between">
         <div class="logo">
-          <h1 class="text-light"><a href="#mtaayetu"><span>Mtaani_Updates</span></a></h1>
+          <h1 class="text-light"><a href="{% url 'home' %}"><span>Mtaani_Updates</span></a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
@@ -23,15 +23,19 @@
               </ul>
 
               </li>
+              {% if user.is_authenticated %}
+
 
             <li class="dropdown"><a href="#"><span><i class="user large icon"></i>{{request.user}} </span></a>
               <ul>
                 <li><a href="/myprofile">Profile</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/logout">Logout</a></li>
 
 
               </ul>
             </li>
+            {% endif %}
+
             <li><a class="getstarted scrollto" href="#about">Share your story</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>

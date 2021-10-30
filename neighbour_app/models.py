@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -14,7 +13,9 @@ class Profile(models.Model):
     identity = models.IntegerField(null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-
+    hood = models.CharField(max_length=255)
+    location = models.CharField(max_length=255)
+    occupants = models.IntegerField(null=True,blank=True)
 
 
     def __str__(self):
@@ -22,17 +23,6 @@ class Profile(models.Model):
 
     def  save_profile(self):
         self.save()
-
-    
-class Neighbourhood(models.Model):
-    name = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
-    occupants = models.IntegerField()
-    admin = models.ForeignKey(User,on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f'{self.admin}'
- 
 
     def create_neighbourhood(self):
         self.save()
@@ -51,11 +41,13 @@ class Neighbourhood(models.Model):
         neighbourhood = cls.objects.filter(id = neighbourhood_id)   
         return neighbourhood   
 
+    
+
 class Business(models.Model):
     name = models.CharField(max_length=255)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    image = CloudinaryField('image',null = True,blank = True)
-    neighbourhood_id = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    image = CloudinaryField('image')
+    neighbourhood_id = models.ForeignKey(Profile,on_delete=models.CASCADE)
     email = models.EmailField(unique=True)
 
     def __str__(self):
@@ -78,11 +70,11 @@ class Business(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=80)
     content = models.TextField()
-    image = CloudinaryField('image',null = True)
+    image = CloudinaryField('image')
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='posts')
-
+    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.title[:30])
