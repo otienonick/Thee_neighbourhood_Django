@@ -7,10 +7,26 @@
 
         <div class="container  homepage">  
             <div class="ui center aligned basic segment">
+                
 
                 <div class="ui horizontal divider text-white">
                     HIGHLIGHTS
                     </div>
+                    <div class="ui fluid">
+                        <form action="{% url 'search_results' %}" role="search">
+                            <div class="ui search">
+
+                        <div class="ui icon input">
+                                <input class="prompt" type="text" name = 'post' placeholder="Search for anything...">
+                                <i class="search icon"></i>
+                                </div>
+
+                            </form>
+
+                         
+                        </div>
+                        <div class="results"></div>
+                      </div>
                     </div>    
 
     <div class="row">
@@ -18,12 +34,17 @@
         <div class="col-md-6 col-lg-4 col-12 col-sm-12">
             <div class="row m-1 mb-3">
                 <div class="card  ">
+
                     <div class="image mt-3">
                         <img class="ui image image__img" src="{{post.image.url}}" alt="img">
                     </div>
                     
                     <div class="card-body">
+                        <h4><span class=""> {{post.title}}</span></h4>
+
                         <h6><span class="upper"> {{post.name}}</span></h6><br>
+                        <h6><span class=""> {{post.content}}</span></h6><br>
+
 
               
                         <p class="float-end">{{post.created |date:"M d, Y"}}</p>

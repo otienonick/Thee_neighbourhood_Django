@@ -91,7 +91,12 @@ class Post(models.Model):
     def find_post(cls,post_id = None):
         post = cls.objects.filter(id = post_id)   
         return post       
-
+        
+    @classmethod
+    def search_by_title(cls,search_term):
+        post = cls.objects.filter(title__icontains = search_term)   
+        # We filter the model data using the __icontains query filter
+        return post     
 
     class Meta:
         ordering = ['-created'] 

@@ -1,7 +1,7 @@
 from django.urls import path 
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import home,my_profile_view,home_page,business_details,post,services
+from .views import home,my_profile_view,home_page,business_details,post,services,search_results
 
 urlpatterns = [
     path('' , home , name = 'home'),
@@ -10,6 +10,8 @@ urlpatterns = [
     path('create-post/',post,name ='post'),
     path('services/',services,name ='services'),
     path('business/<str:pk>' , business_details , name='business'),
+    path('search/',search_results, name ='search_results'),
+
 ]
 
 if settings.DEBUG:

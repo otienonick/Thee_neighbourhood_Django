@@ -1,0 +1,47 @@
+{%extends 'neighbour/base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row text-center" style="margin-top: 100px;">
+    {% if post%}
+      <h2>Found {{ post|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 posts for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if post %}
+
+  {% for post in post %}
+  <div class="col-md-6 col-lg-4 col-12 col-sm-12">
+      <div class="row m-1 mb-3">
+          <div class="card  ">
+
+              <div class="image mt-3">
+                  <img class="ui image image__img" src="{{post.image.url}}" alt="img">
+              </div>
+              
+              <div class="card-body">
+                <h4><span class=""> {{post.title}}</span></h4>
+
+                  <h6><span class="upper"> {{post.name}}</span></h6><br>
+                  <h6><span class=""> {{post.content}}</span></h6><br>
+                  <p class="float-end">{{post.created |date:"M d, Y"}}</p>
+                  <p>By:<span class="upper fs-5"> {{post.author}}</span></p>
+              </div>
+            </div>
+      </div>
+  </div>
+  {% empty %}
+  <div class="row">
+      <h2 class="text-center">No recent photos</h2>
+    </div>
+  {% endfor%}
+
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

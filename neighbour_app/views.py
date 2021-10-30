@@ -24,7 +24,7 @@ def my_profile_view(request):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            
+
     context = {
         'profile':profile,
         'form':form,
@@ -96,3 +96,20 @@ def services(request):
     return render(request,'neighbour/services.html',context)
 
 
+
+def search_results(request):
+
+    if 'post' in request.GET and request.GET["post"]:
+        search_term = request.GET.get("post")
+        searched_articles = Post.search_by_title(search_term)
+        message = f"{search_term}"
+        context = {"message":message,
+        "post": searched_articles}
+
+        return render(request, 'neighbour/search.html',context)
+    else:
+        message = "no projects found"
+        context = {
+            'message':message
+        }
+        return render(request, 'neighbour/homepage.html',context)  
