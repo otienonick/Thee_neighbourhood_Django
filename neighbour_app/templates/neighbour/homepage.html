@@ -3,11 +3,12 @@
 
 {% block title%}Your Story{% endblock%}
 {% block content%}
+<div class="hoepage">
 
-        <div class="container mt-5 homepage">  
+        <div class="container  homepage">  
             <div class="ui center aligned basic segment">
 
-                <div class="ui horizontal divider">
+                <div class="ui horizontal divider text-white">
                     HIGHLIGHTS
                     </div>
                     </div>    
@@ -33,7 +34,7 @@
         </div>
         {% empty %}
         <div class="row">
-            <h2 class="text-center text-white">No photos</h2>
+            <h2 class="text-center">No recent photos</h2>
           </div>
         {% endfor%}
         
@@ -41,6 +42,8 @@
 
 
                 </div>
+            </div>
+
 
 
       

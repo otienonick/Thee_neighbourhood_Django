@@ -13,12 +13,19 @@ class ProfileModelForm(forms.ModelForm):
 
 
 
-# class NeighbourhoodModelForm(forms.ModelForm):
-#     name = forms.CharField(label = 'hood')
-    
-#     class Meta:
-#         model = Neighbourhood
-#         fields = ['location','name','occupants']        
+class PostModelForm(forms.ModelForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={'rows':3} ))
+    location = forms.CharField(label = 'Your hood')
+
+    class Meta:
+        model = Post
+        fields = ['title','content','image']
+
+
+
+  
+
+
 
 class BusinessModelForm(forms.ModelForm):
     name = forms.CharField(label = 'Business name')
@@ -27,7 +34,3 @@ class BusinessModelForm(forms.ModelForm):
         model = Business
         fields = ['name','image','email','neighbourhood_id']     
 
-# class LoginForm(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ('email', 'phone', 'password')

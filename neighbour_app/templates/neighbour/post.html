@@ -1,0 +1,33 @@
+
+{%extends 'neighbour/base.html'%}
+{% block content %}
+{{block.super}}
+<div class="post">
+
+<div class="container d-flex justify-content-center" style="width: 500px; padding-top: 150px;">
+
+<div class="ui grid">
+    <div class="row">
+<div class="">
+    <div class="ui raised segment">
+
+    <h3>Share your story {{user}}</h3>
+  
+    <form action="" method="POST" class="ui form" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{p_form.as_p}}
+      <div class="ui ">
+         <button type="submit" class="ui button positive">Post</button>
+  
+      </div>
+  
+  </form>
+  
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+    {%endblock%}

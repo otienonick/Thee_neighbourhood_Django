@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from . models import  Profile,Post,Business
-from .forms  import ProfileModelForm,BusinessModelForm
+from .forms  import ProfileModelForm,BusinessModelForm,PostModelForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -64,6 +64,23 @@ def business_details(request,pk):
     }
     return render(request,'neighbour/business.html',context)
 
+@login_required(login_url='/accounts/login/')
+def post(request):
+    posts = Post.objects.all().order_by('-created')
+    p_form = PostModelForm(request.POST or None,request.FILES or None)
 
+    if p_form.is_valid():
+            instance = p_form.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            return redirect('homepage')
+    p_form = PostModelForm()    
 
+    context = {
+
+        'p_form':p_form,
+        'posts':posts
+
+    }
+    return render(request,'neighbour/post.html',context)
 
