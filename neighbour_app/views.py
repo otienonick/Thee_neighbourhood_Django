@@ -108,7 +108,7 @@ def search_results(request):
 
         return render(request, 'neighbour/search.html',context)
     else:
-        message = "no projects found"
+        message = "no posts found"
         context = {
             'message':message
         }
