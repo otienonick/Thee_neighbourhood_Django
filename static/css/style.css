@@ -418,3 +418,19 @@ position: relative;
 background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/kenya-2.jpeg)center;
 background-size: cover;
 }
+
+#foot a {
+  color: #ebeff8;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+#foot a:hover, a:focus {
+  text-decoration: underline;
+}
+
+
+footer {
+  background: #009970;
+  width: 100%;
+}

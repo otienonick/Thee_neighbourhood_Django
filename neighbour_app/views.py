@@ -21,6 +21,10 @@ def my_profile_view(request):
     profile = Profile.objects.get(user = request.user)
     form = ProfileModelForm(request.POST or None ,request.FILES or None,instance = profile)
 
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            
     context = {
         'profile':profile,
         'form':form,
@@ -83,4 +87,12 @@ def post(request):
 
     }
     return render(request,'neighbour/post.html',context)
+
+def services(request):
+
+    context = {
+
+    }    
+    return render(request,'neighbour/services.html',context)
+
 

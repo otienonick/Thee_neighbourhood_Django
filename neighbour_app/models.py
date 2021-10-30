@@ -10,12 +10,12 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     email = models.EmailField(unique=True)
     image = CloudinaryField('image')
-    identity = models.IntegerField(null=True)
+    identity = models.IntegerField(null=True ,default='12345678')
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    hood = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
-    occupants = models.IntegerField(null=True,blank=True)
+    hood = models.CharField(max_length=255,default='mtaa yako')
+    location = models.CharField(max_length=255,default='areacode')
+    occupants = models.IntegerField(null=True,blank=True,default='5000')
 
 
     def __str__(self):

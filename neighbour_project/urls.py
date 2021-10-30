@@ -23,6 +23,7 @@ urlpatterns = [
     path('',include('neighbour_app.urls')),
     path('accounts/',include('registration.backends.simple.urls')),
     path('logout/',LogoutView.as_view(), {"next_page": '/'}), 
+    
 
 
 ]
