@@ -5,7 +5,7 @@
 ## Description  
 A web application that allows a user be in the loop about everything happening in their neighbourhood.
 ##  Live Link  
- Click [View Site]()  to visit the site
+ Click [View Site](https://mtaayangu.herokuapp.com/)  to visit the site
 
 ## User Story  
 
@@ -65,6 +65,13 @@ python manage.py makemigrations
  python manage.py test 
 ```
 Open the application on your browser `127.0.0.1:8000`.  
+
+## Site overview
+
+<img src="static/img/number1.png">
+<img src="static/img/number2.png">
+<img src="static/img/number3.png">
+<img src="static/img/number4.png">
 
 
 ## Technology used  
