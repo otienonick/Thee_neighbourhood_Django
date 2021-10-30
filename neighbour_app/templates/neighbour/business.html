@@ -11,6 +11,11 @@
             <h6> <strong>Premise Name:</strong> <span class="upper"> {{business.name}}</span></h6>
 
             <p class="my-3"><strong>Email:</strong>{{business.email}}</p>
+            {% if business.phone_number %}
+            <p class="my-3"><strong>phone_number:</strong>{{business.phone_number}}</p>
+
+
+            {% endif %}
 
             <div class="mt-5">
               <button class="ui inverted  green button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Post your Businnes</button>

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 
+
 # Create your models here.
 
 class Profile(models.Model):
@@ -49,6 +50,7 @@ class Business(models.Model):
     image = CloudinaryField('image')
     neighbourhood_id = models.ForeignKey(Profile,on_delete=models.CASCADE)
     email = models.EmailField(unique=True)
+    phone_number =  models.IntegerField(null=True,blank=True)
 
     def __str__(self):
         return f'{self.name}-{self.neighbourhood_id}'
@@ -91,7 +93,7 @@ class Post(models.Model):
     def find_post(cls,post_id = None):
         post = cls.objects.filter(id = post_id)   
         return post       
-        
+
     @classmethod
     def search_by_title(cls,search_term):
         post = cls.objects.filter(title__icontains = search_term)   

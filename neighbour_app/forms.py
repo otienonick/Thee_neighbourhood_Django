@@ -1,6 +1,7 @@
 from .models import Profile,Post,Business
 from django import forms
 
+
 # from django.contrib.auth.models import User
 
 class ProfileModelForm(forms.ModelForm):
@@ -23,14 +24,13 @@ class PostModelForm(forms.ModelForm):
 
 
 
-  
-
-
 
 class BusinessModelForm(forms.ModelForm):
     name = forms.CharField(label = 'Business name')
+    phone_number = forms.IntegerField( widget=forms.TextInput(attrs={'placeholder': 'format...0718849600'}))
+
 
     class Meta:
         model = Business
-        fields = ['name','image','email','neighbourhood_id']     
+        fields = ['name','image','email','neighbourhood_id','phone_number']     
 
