@@ -48,7 +48,7 @@ class BusinessTestClass(TestCase):
         self.oti = Profile(username = 'test_username',user = user, email = 'test_email',identity = '123456',created = '28-10-2021',updated = '28-10-2021' ,hood = 'test_hood',location = 'test_location',occupants = '5000')
         self.oti.save()
 
-        self.new_business = Business(name = 'test_business_name',user = user,neighbourhood_id = self.oti,email = 'test_email')
+        self.new_business = Business(name = 'test_business_name',user = user,neighbourhood_id = self.oti,email = 'test_email',phone_number = '0718849600')
         self.new_business.create_business()
         business = Business.objects.all()
         self.assertTrue(len(business) > 0)
