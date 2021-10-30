@@ -324,11 +324,8 @@ padding:50px 0;
   
 }
 .hoepage{
-  width: 100%;
-height: 100vh;
-position: relative;
-background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/kenya-2.jpeg)center;
-background-size: cover;
+  margin-bottom: 200px;
+
 }
 
 #foot a {
